@@ -5,6 +5,8 @@ import axios from "axios";
 import { useRoute } from "@react-navigation/native";
 import { TextInput, ImageBackground } from "react-native";
 import { ActivityIndicator } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 
 export default function SearchScreen({ navigation, route }) {
   const [query, setQuery] = React.useState("");
@@ -53,7 +55,7 @@ export default function SearchScreen({ navigation, route }) {
 
   const renderItem = ({ item }) => (
     <Pressable
-      className="rounded-xl p-2"
+      className="rounded-xl p-2 justify-center items-center"
       onPress={() => navigation.navigate("Details", { data: item })}
     >
       <ImageBackground
@@ -103,32 +105,35 @@ export default function SearchScreen({ navigation, route }) {
   );
 
   return (
-    <View className="bg-slate-800 flex-1">
-      <View className="flex-row justify-around items-center p-4">
-        <TextInput
-          className="bg-white rounded-xl p-2"
-          style={{ width: "80%" }}
-          placeholder="Search for a movie"
-          value={query}
-          onChangeText={(text) => setQuery(text)}
-        />
-        <Pressable className="bg-white rounded-xl p-2" onPress={handleSearch}>
-          <Text className="font-700">Search</Text>
-        </Pressable>
-        <Pressable className="bg-white rounded-xl p-2" onPress={handleClear}>
-          <Text className="font-700">Clear</Text>
-        </Pressable>
-      </View>
+    <>
+      <StatusBar style="auto" />
+      <View className="bg-slate-800 flex-1 py-4">
+        <View className="flex-row justify-around items-center p-4">
+          <TextInput
+            className="bg-white rounded-xl p-2"
+            style={{ width: "70%" }}
+            placeholder="Search for a movie"
+            value={query}
+            onChangeText={(text) => setQuery(text)}
+          />
+          <Pressable className="bg-white rounded-xl p-2" onPress={handleSearch}>
+            <Text className="font-700">Search</Text>
+          </Pressable>
+          <Pressable className="bg-white rounded-xl p-2" onPress={handleClear}>
+            <Text className="font-700">Clear</Text>
+          </Pressable>
+        </View>
 
-      {loading ? (
-        <ActivityIndicator size="large" color="#00ff00" />
-      ) : (
-        <FlatList
-          data={results}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
-        />
-      )}
-    </View>
+        {loading ? (
+          <ActivityIndicator size="large" color="#00ff00" />
+        ) : (
+          <FlatList
+            data={results}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        )}
+      </View>
+    </>
   );
 }

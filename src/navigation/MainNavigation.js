@@ -123,7 +123,7 @@ export default function MainNavigation() {
           headerShown: false,
         }}
       >
-        <Stack.Screen name="Home" component={HomeStackScreen} />
+        <Stack.Screen name="HomeStack" component={HomeStackScreen} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Movies" component={MoviesStackScreen} />
         <Stack.Screen name="Seasons" component={SeasonsStackScreen} />

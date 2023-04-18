@@ -24,7 +24,7 @@ export default function Home({ navigation }) {
         </Pressable>
         <Pressable
           className="flex-1 p-4"
-          onPress={() => navigation.navigate("Seasons")}
+          onPress={() => navigation.navigate("Movies")}
         >
           <View className="bg-pink-600 rounded-lg shadow-lg p-4">
             <Text className="text-white text-center text-lg font-bold">
