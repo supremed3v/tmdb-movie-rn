@@ -60,7 +60,13 @@ function MoviesStackScreen() {
       }}
     >
       <Tab.Screen name="Movies" component={MoviesScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen
+        name="Search"
+        initialParams={{
+          search: "movies",
+        }}
+        component={SearchScreen}
+      />
     </Tab.Navigator>
   );
 }
@@ -97,7 +103,13 @@ function SeasonsStackScreen() {
       }}
     >
       <Tab.Screen name="Seasons" component={SeasonsScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
+      <Tab.Screen
+        name="Search"
+        initialParams={{
+          search: "seasons",
+        }}
+        component={SearchScreen}
+      />
     </Tab.Navigator>
   );
 }
